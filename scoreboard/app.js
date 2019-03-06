@@ -7,34 +7,43 @@ function Header(props){     //props are used to customize our components and pas
     )
 }
 
-const Player = () => {
+const Player = (props) => {
     return (
         <div className="player">
             <span className="player-name">
-                Kelly
+                {props.name}
             </span>
-            <Counter />
+            <Counter 
+            score ={props.score}
+            />
         </div>
     );
 } 
 
-const Counter = () => {
+const Counter = (props) => {
     return (
         <div className="counter">
             <button className="counter-action decrement"> - </button>
-            <span className="counter-score">100</span>
+            <span className="counter-score">{props.score}</span>
             <button className="counter-action increment"> + </button>
         </div>
     );
 }
 
-const App = () => {
+const App = (props) => {
     return(
         <div className="scoreboard">
-        <Header title="Scoreboard" totalPlayers= {1}/>          {/*pass props to a component via the component's JSX tag at the place where it's used*/}
+        <Header 
+        title="Scoreboard" 
+        totalPlayers= {5}
+        />                                       
 
     {/*Players list*/}
-    <Player />
+    <Player name = "Kelly" score={1000}/>
+    <Player name = "Johnny" score={500}/>
+    <Player name = "Bill" score={-250}/>
+    <Player name = "Lil" score={750}/>
+    <Player name = "Bianca" score={500}/>
         </div>
     )
 }
