@@ -1,3 +1,24 @@
+const players =     [
+{
+    name:"Kelly", score:1000, id:1
+},
+{
+    name:"Johnny", score:500, id:2
+},
+{
+    name:"Bill", score:-250, id:3
+},
+{
+    name:"Lil", score:750, id:4
+},
+{
+    name:"Bianca", score:500, id:5
+},
+{
+    name:"Bryan", score:650, id:6
+}
+]
+
 function Header(props){     //props are used to customize our components and pass dynamic data into them. componenets are customized and made reusable with props
     return (                
         <header>
@@ -35,21 +56,23 @@ const App = (props) => {
         <div className="scoreboard">
         <Header 
         title="Scoreboard" 
-        totalPlayers= {5}
+        totalPlayers= {props.initialPlayers.length}
         />                                       
-
+  
     {/*Players list*/}
-    <Player name = "Kelly" score={1000}/>
-    <Player name = "Johnny" score={500}/>
-    <Player name = "Bill" score={-250}/>
-    <Player name = "Lil" score={750}/>
-    <Player name = "Bianca" score={500}/>
+    {props.initialPlayers.map(player =>
+        <Player 
+        name ={player.name} 
+        score={player.score}
+        key={player.id.toString}
+        />
+    )}
         </div>
     )
 }
 
     
     ReactDOM.render(                    //connects React to the DOM. the function that actually does the creating and updating of the DOM. accepts two args
-        <App />,
+        <App initialPlayers={players}/>,
         document.getElementById('root')
     );       
