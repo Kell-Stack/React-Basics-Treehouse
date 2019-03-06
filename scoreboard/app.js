@@ -1,8 +1,8 @@
-function Header(){                                      //define the component as either a JavaScript function or class. our Header function is defining a component
-    return (                                            //note: React components are required to begin with an upper case letter
+function Header(props){     //props are used to customize our components and pass dynamic data into them. componenets are customized and made reusable with props
+    return (                
         <header>
-            <h1>Scoreboard</h1>
-            <span className="stats"> Players: 1 </span>
+            <h1>{props.title}</h1>
+            <span className="stats"> Players: {props.totalPlayers}  </span>
         </header>
     )
 }
@@ -31,7 +31,7 @@ const Counter = () => {
 const App = () => {
     return(
         <div className="scoreboard">
-        <Header />
+        <Header title="Scoreboard" totalPlayers= {1}/>          {/*pass props to a component via the component's JSX tag at the place where it's used*/}
 
     {/*Players list*/}
     <Player />
