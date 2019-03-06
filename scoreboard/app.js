@@ -34,21 +34,31 @@ const Player = (props) => {
             <span className="player-name">
                 {props.name}
             </span>
-            <Counter 
-            score ={props.score}
-            />
+            <Counter />
         </div>
     );
 } 
 
-const Counter = (props) => {
+class Counter extends React.Component {
+
+    state = {
+        score:0
+    }
+    // constructor(){    //same as above but don't have tow orry about setting constructor or super
+    //     super()
+    //     this.state = {
+    //         score:0
+    //     };
+    // }
+    render () {
     return (
         <div className="counter">
             <button className="counter-action decrement"> - </button>
-            <span className="counter-score">{props.score}</span>
+            <span className="counter-score">{this.state.score}</span>
             <button className="counter-action increment"> + </button>
         </div>
     );
+}
 }
 
 const App = (props) => {
